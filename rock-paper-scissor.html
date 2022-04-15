@@ -1,6 +1,7 @@
 <script>
     let wins=0;
     let looses=0;
+    let ties =0;
     for (let i=0; i < 5; i++) {
         
         const playerSelection = window.prompt ('Please write rock, paper or scissors.');
@@ -17,7 +18,7 @@
         switch (true) {
             case playerSelection === pcSelection:
             console.log("Its a tie! Try one more time!");
-            
+            ties++
             break;
 
             case    playerSelection == "paper" && pcSelection == "rock":
@@ -40,7 +41,12 @@
         }
 
     }
-
-
-
+if (wins >= 3) {
+    alert("Winner, Winner; Chicken dinner")
+} else if (looses >= 3){
+  alert("that was Pathetic")  
+}
+else {
+    alert("what bummer!!")
+}
 </script>
