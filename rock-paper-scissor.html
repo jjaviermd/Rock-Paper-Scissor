@@ -1,83 +1,46 @@
 <script>
-    const playerSelection = window.prompt ('Please write rock, paper or scissors.');
-    console.log(playerSelection);
     let wins=0;
     let looses=0;
+    for (let i=0; i < 5; i++) {
+        
+        const playerSelection = window.prompt ('Please write rock, paper or scissors.');
+        console.log(playerSelection);
+   
 
-    function pcPlay(){
+        function pcPlay(){
         const pcOptions=["rock","paper","scissors"];
         return pcOptions[Math.floor(Math.random() * pcOptions.length)];
-    }
-    let pcSelection=pcPlay();
-    console.log(pcSelection);
+        }
+        let pcSelection=pcPlay();
+        console.log(pcSelection);
 
-    switch (true) {
-        case playerSelection === pcSelection:
+        switch (true) {
+            case playerSelection === pcSelection:
             console.log("Its a tie! Try one more time!");
             
-        break;
+            break;
 
-        case    playerSelection == "paper" && pcSelection == "rock":
-        case    playerSelection == "rock" && pcSelection == "scissors":
-        case    playerSelection == "scissors" && pcSelection == "paper":
+            case    playerSelection == "paper" && pcSelection == "rock":
+            case    playerSelection == "rock" && pcSelection == "scissors":
+            case    playerSelection == "scissors" && pcSelection == "paper":
             console.log("Good job! Keep on track");
-        break;
+            wins++;
+            break;
 
-        case    playerSelection == "rock" && pcSelection == "paper":
-        case    playerSelection == "paper" && pcSelection == "scissors":
-        case    playerSelection == "scissors" && pcSelection == "rock":
+            case    playerSelection == "rock" && pcSelection == "paper":
+            case    playerSelection == "paper" && pcSelection == "scissors":
+            case    playerSelection == "scissors" && pcSelection == "rock":
             console.log("crap!!, but its not over");
-        break;
+            looses++;
+            break;
 
-        default:
+            default:
             console.log("Sorry, Something went terribly wrong!!")
             break;
+        }
+
     }
 
-
-/*
-    function playRound(playerSelection, pcSelection) {
-        if(playerSelection = "paper" && pcSelection = "rock",
-            playerSelection = "rock" && pcSelection = "scissors",
-            playerSelection = "scissors" && pcSelection = "paper"){
-                console.log("Good job! Keep on track");
-        }
-        else if (playerSelectio = "rock" && pcSelection ="paper",
-        playerSelection = "paper" && pcSelection = "scissors",
-        playerSelection = "scissors" && pcSelection = "rock") {
-            console.log("crap!!, but its not over");
-        }
-        else {
-            console.log("Its atie!! Please, try one more time")
-        }
-    }
-
-
-    switch (true) {
-        case playerSelection === pcSelection:
-            console.log("Its a tie! Try one more time!");
-            
-            break;
-        case playerSelection = "paper" && pcSelection = "rock":
-            playerSelection = "rock" && pcSelection = "scissors":
-            playerSelection = "scissors" && pcSelection = "paper":
-            console.log("Good job! Keep on track");
-            break;
-
-        case playerSelectio = "rock" && pcSelection ="paper":
-        playerSelection = "paper" && pcSelection = "scissors":
-        playerSelection = "scissors" && pcSelection = "rock":
-            console.log("crap!!, but its not over");
-
-        default:
-            break;
-    }
-
-
-    const option = ['rock','paper','scissors'];
-    let pcSelection = option[Math.floor(Math.random()*3)];   
-    console.log(pcSelection)
-*/
 
 
 </script>
