@@ -1,52 +1,24 @@
-<script>
-    let wins=0;
-    let looses=0;
-    let ties =0;
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock-Paper-Scissors Game</title>
+        <meta name="viewport" content="width=width-device, initial-scale=1">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <header><h1>Rock-Paper-Scissors Game</h1></header>
+        <main> 
+            <span id="intro"><h2>Try your lock</h2>
+                 <p>Play five rounds of Rock-Paper-Scissors</p>
+            </span>
+            <div id="thebottons">
+                <button name="rock">ROCK</button>
+                <button name="paper">PAPER</button>
+                <button name="scissors">SCISSORS</button>
+            </div>
 
-    for (let i=0; i < 5; i++) {
-        
-        const playerSelect = window.prompt ('Please write rock, paper or scissors.');
-        let playerSelection = playerSelect.toLowerCase();
-        console.log('You Played '+playerSelection);
-   
+        </main>
+    </body>
 
-        function pcPlay(){
-        const pcOptions=["rock","paper","scissors"];
-        return pcOptions[Math.floor(Math.random() * pcOptions.length)];
-        }
-        let pcSelection=pcPlay();
-        console.log('PC played '+pcSelection);
-
-        switch (true) {
-            case playerSelection === pcSelection:
-            console.log("Its a tie! Try one more time!");
-            ties++
-            break;
-
-            case    playerSelection == "paper" && pcSelection == "rock":
-            case    playerSelection == "rock" && pcSelection == "scissors":
-            case    playerSelection == "scissors" && pcSelection == "paper":
-            console.log("Good job! Keep on track");
-            wins++;
-            break;
-
-            case    playerSelection == "rock" && pcSelection == "paper":
-            case    playerSelection == "paper" && pcSelection == "scissors":
-            case    playerSelection == "scissors" && pcSelection == "rock":
-            console.log("crap!!, but its not over");
-            looses++;
-            break;
-
-            default:
-            console.log("Sorry, Something went terribly wrong!!")
-            break;
-        }
-
-    }
-if (wins > looses) {
-    alert("Winner, Winner; Chicken dinner")
-} else if (looses > wins){
-  alert("That was Pathetic")  
-}
-
-</script>
+</html>
