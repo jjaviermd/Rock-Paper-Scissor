@@ -1,5 +1,8 @@
 let playerSelection;
 let pcSelection;
+let playerWins = 0;
+let pcWins = 0;
+let roundCounter =0;
 //==============================================================================
 
 function playerPlay (e){
@@ -24,25 +27,36 @@ return playerSelection;
 function playRound(){
   switch (true) {
     case playerSelection === pcSelection:
-      alert("DRAW!!");
+      roundCounter++;
+      alert("DRAW!! Score: YOU: "+playerWins +" PC: "+pcWins+ ". Rounds: "+ roundCounter);
       break;
 
     case playerSelection == "paper" && pcSelection == "rock":
     case playerSelection == "rock" && pcSelection == "scissors":
     case playerSelection == "scissors" && pcSelection == "paper":
-      alert('YOU WON THE ROUND')
-      wins++;
+      playerWins++
+      roundCounter++;
+      alert('YOU WON THE ROUND. Score: YOU: '+playerWins +' PC: '+pcWins+'. Rounds: '+ roundCounter);
+      if(playerWins === 5) {
+        alert('GAME OVER. You are the winner!');
+        playerWins=0;
+        pcWins=0
+        roundCounter=0;
+      }
       break;
 
     case playerSelection == "rock" && pcSelection == "paper":
     case playerSelection == "paper" && pcSelection == "scissors":
     case playerSelection == "scissors" && pcSelection == "rock":
-      alert('YOU LOST THE ROUND')
-      looses++;
-      break;
-
-    default:
-      console.log("Sorry, Something went terribly wrong!!")
+      pcWins++
+      roundCounter++;
+      alert('YOU LOST THE ROUND. Score: YOU: '+playerWins +' PC: '+pcWins+'. Rounds: '+ roundCounter);
+      if (pcWins === 5) {
+        alert('GAME OVER. You loose!');
+        playerWins=0;
+        pcWins=0;
+        roundCounter=0;
+      }
       break;
         }
       }
