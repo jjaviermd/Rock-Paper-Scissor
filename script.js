@@ -1,32 +1,26 @@
-const buttons = document.querySelectorAll('button');
-buttons.forEach((button)=> {
-  button.addEventListener('click', playerPlay);
-});
 
 //==============================================================================
-function playerPlay (){
-  let playerSelection = '';
-  const buttons = document.querySelectorAll('button');
-  buttons.forEach((button)=> {
-    button.addEventListener('click', () =>{
-      playerSelection += button.id;
-    })
-    return playerSelection;
-})
+
+function playerPlay (e){
+let playerSelection=e.target.textContent.toLowerCase();
+console.log('Your hand shows a ' + playerSelection)
+return playerSelection;
 }
 
 //------------------------------------------------------------------------------
 
  function pcPlay(){
     const pcOptions=["rock","paper","scissors"];
-    return pcOptions[Math.floor(Math.random() * pcOptions.length)];
-        }
+    let pcSelection = pcOptions[Math.floor(Math.random() * pcOptions.length)];
+    console.log('PC\'s hand shows a ' + pcSelection);
+    return pcSelection;
+  }
 
 
 //------------------------------------------------------------------------------
     
 
-function playRound(){
+function playRound(playerSelection, pcSelection){
   switch (true) {
     case playerSelection === pcSelection:
       console.log("Its a tie! Try one more time!");
@@ -52,3 +46,13 @@ function playRound(){
       break;
         }
       }
+//==============================================================================
+const rpsbtn = document.querySelectorAll('.btn');
+
+rpsbtn.forEach((button)=> {
+  button.addEventListener('click', (e)=>{
+    playerPlay(e);
+    pcPlay();
+    playRound(playerSelection,pcSelection)
+  } )
+})
