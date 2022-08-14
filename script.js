@@ -3,12 +3,21 @@ let pcSelection;
 let playerWins = 0;
 let pcWins = 0;
 let roundCounter =0;
+const mainContainer = document.querySelector('main');
+const divPlayerHand = document.createElement('div');
+  mainContainer.appendChild(divPlayerHand);
+const divPcHand = document.createElement('div');
+  mainContainer.appendChild(divPcHand);
+const divResults =  document.createElement('div');
+  mainContainer.appendChild(divResults);
+const divGameEnd = document.createElement('div');
+  mainContainer.appendChild(divGameEnd);
 //==============================================================================
 
 function playerPlay (e){
-playerSelection=e.target.textContent.toLowerCase();
-console.log('Your hand shows a ' + playerSelection)
-return playerSelection;
+  playerSelection=e.target.textContent.toLowerCase();
+  divPlayerHand.textContent = 'Your hand shows a ' + playerSelection;
+  return playerSelection;
 }
 
 //------------------------------------------------------------------------------
@@ -16,7 +25,7 @@ return playerSelection;
  function pcPlay(){
     const pcOptions=["rock","paper","scissors"];
     pcSelection = pcOptions[Math.floor(Math.random() * pcOptions.length)];
-    console.log('PC\'s hand shows a ' + pcSelection);
+    divPcHand.textContent = 'PC\'s hand shows a ' + pcSelection;
     return pcSelection;
   }
 
@@ -28,7 +37,7 @@ function playRound(){
   switch (true) {
     case playerSelection === pcSelection:
       roundCounter++;
-      alert("DRAW!! Score: YOU: "+playerWins +" PC: "+pcWins+ ". Rounds: "+ roundCounter);
+      divResults.textContent = "DRAW!! Score: YOU: "+playerWins +" PC: "+pcWins+ ". Rounds: "+ roundCounter;
       break;
 
     case playerSelection == "paper" && pcSelection == "rock":
@@ -36,9 +45,9 @@ function playRound(){
     case playerSelection == "scissors" && pcSelection == "paper":
       playerWins++
       roundCounter++;
-      alert('YOU WON THE ROUND. Score: YOU: '+playerWins +' PC: '+pcWins+'. Rounds: '+ roundCounter);
+      divResults.textContent= 'YOU WON THE ROUND. Score: YOU: '+playerWins +' PC: '+pcWins+'. Rounds: '+ roundCounter;
       if(playerWins === 5) {
-        alert('GAME OVER. You are the winner!');
+        divGameEnd.textContent = 'GAME OVER. You are the winner!';
         playerWins=0;
         pcWins=0
         roundCounter=0;
@@ -50,9 +59,9 @@ function playRound(){
     case playerSelection == "scissors" && pcSelection == "rock":
       pcWins++
       roundCounter++;
-      alert('YOU LOST THE ROUND. Score: YOU: '+playerWins +' PC: '+pcWins+'. Rounds: '+ roundCounter);
+      divResults.textContent= 'YOU LOST THE ROUND. Score: YOU: '+playerWins +' PC: '+pcWins+'. Rounds: '+ roundCounter;
       if (pcWins === 5) {
-        alert('GAME OVER. You loose!');
+        divGameEnd.textContent = 'GAME OVER. You loose!';
         playerWins=0;
         pcWins=0;
         roundCounter=0;
@@ -70,3 +79,4 @@ rpsbtn.forEach((button)=> {
     playRound();
   } )
 })
+//==============================================================================
