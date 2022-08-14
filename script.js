@@ -74,6 +74,7 @@ const rpsbtn = document.querySelectorAll('.btn');
 
 rpsbtn.forEach((button)=> {
   button.addEventListener('click', (e)=>{
+    divGameEnd.textContent='';
     playerPlay(e);
     pcPlay();
     playRound();
